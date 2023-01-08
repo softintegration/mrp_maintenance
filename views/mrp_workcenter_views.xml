@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="mrp_workcenter_view_inherited" model="ir.ui.view">
+            <field name="name">mrp.workcenter.view.inherited</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="equipment_id" options="{'no_create_edit': True}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mrp_workcenter_tree_view_inherited" model="ir.ui.view">
+            <field name="name">mrp.workcenter.tree.view.inherited</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="equipment_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_mrp_workcenter_search_inherited" model="ir.ui.view">
+            <field name="name">view.mrp.workcenter.search.inherited</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.view_mrp_workcenter_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="equipment_id"/>
+                </xpath>
+                <xpath expr="//filter[@name='company']" position="before">
+                    <filter string="Equipment" name="equipment" domain="[]" context="{'group_by': 'equipment_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+</odoo>
